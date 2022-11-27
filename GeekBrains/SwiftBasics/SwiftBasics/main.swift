@@ -1,45 +1,29 @@
+
 import Foundation
 
-let a : Double = 3
-let b : Double = 7
-let c : Double = -10
-var x1 : Double
-var x2 : Double
+// MARK: - 1. Написать функцию, которая определяет, четное число или нет.
 
-var resalutDis = (b*b) - (4*a*c)
+func evenNumber(_ value: Int) -> Bool {
+    return value % 2 == 0
+}
 
-print(resalutDis) // дискриминант положительный
+// MARK: - 2. Написать функцию, которая определяет, делится ли число без остатка на 3.
 
-x1 = (-b + sqrt(resalutDis)) / (2 * a)
-x2 = (-b - sqrt(resalutDis)) / (2 * a)
+//var b = 55
 
-print("x1 =  \(x1)")
-print("x2 = \(x2)")
+func divisionNumber(_ value: Int) -> Bool {
+    return value % 3 == 0 ? true : false
+}
 
-// задание 2 Даны катеты прямоугольного треугольника. Найти площадь, периметр и гипотенузу треугольника.
+//MARK: - 3. Создать возрастающий массив из 100 чисел.
 
+var xArray : Array<Int> =  [Int]()
+var i = 0
+while i<100 {
+    xArray.append(i+1)
+    i+=1
+}
 
-let aLeg : Double = 3
-let bLeg : Double = 4
-var hypotenuse : Double
+// MARK: - 4. Удалить из этого массива все четные числа и все числа, которые не делятся на 3.
 
-var Interpreter = (a*b) / 2    // площадь прямоугольного треугольника
-    hypotenuse = sqrt((aLeg * aLeg) + (bLeg*bLeg))  // гипотенуза треугольника
-var perimetr = aLeg + bLeg + hypotenuse
-
-print("Interpreter = \(Interpreter)")
-print("hypotenuse = \(hypotenuse)")
-print("perimetr = \(perimetr)")
-
-
-
-    // задание 3 Пользователь вводит сумму вклада в банк и годовой процент. Найти сумму вклада через 5 лет.
-
-var contribution : Double = 15000
-var percent : Double = 3.5
-
-var resultpercent = (contribution / 100 * percent / 365 * 1825)
-var resultcontribution = contribution + resultpercent
-
-print("resultcontribution = \(resultcontribution)")
-
+xArray.removeAll(where: {evenNumber($0) || !divisionNumber($0)})
