@@ -1,129 +1,213 @@
 import Foundation
 
-// 1. Описать несколько структур – любой легковой автомобиль SportCar и любой грузовик TrunkCar.
-//2. Структуры должны содержать марку авто, год выпуска, объем багажника/кузова, запущен ли двигатель, открыты ли окна, заполненный объем багажника.
-//3. Описать перечисление с возможными действиями с автомобилем: запустить/заглушить двигатель, открыть/закрыть окна, погрузить/выгрузить из кузова/багажника груз определенного объема.
-//4. Добавить в структуры метод с одним аргументом типа перечисления, который будет менять свойства структуры в зависимости от действия.
-//5. Инициализировать несколько экземпляров структур. Применить к ним различные действия.
+//1. Описать класс Car c общими свойствами автомобилей и пустым методом действия по аналогии с прошлым заданием.
+// готово
+//2. Описать пару его наследников trunkCar и sportСar. Подумать, какими отличительными свойствами обладают эти автомобили. Описать в каждом наследнике специфичные для него свойства.
+//3. Взять из прошлого урока enum с действиями над автомобилем. Подумать, какие особенные действия имеет trunkCar, а какие – sportCar. Добавить эти действия в перечисление.
+//готово
+//4. В каждом подклассе переопределить метод действия с автомобилем в соответствии с его классом.
+//5. Создать несколько объектов каждого класса. Применить к ним различные действия.
 //6. Вывести значения свойств экземпляров в консоль.
-
+import Foundation
 // MARK: - Перечисления
 
-enum windowCar: String {
-    case open = "окна открыты"
-    case closed = "окна закрыты"
+enum WindowCar: String {
+    case Open = "окна открыты"
+    case Closed = "окна закрыты"
 }
 
-enum engineState: String {
+enum EngineState: String {
     case Start = "Двигатель запущен"
     case Stop = "Двигатель Остановлен"
 }
 
-enum baggageFill: String {
+enum BaggageFill: String {
     case Full = "Багажник заполнен полностью"
     case Empty = "Багажник пуст"
-    case partially = "Багажник запонен на - "
-    case overload = "Перегруз багажа! попробуйте добавить меньше груза"
+    case Partially = "Багажник запонен на - "
+    case Overload = "Перегруз багажа! попробуйте добавить меньше груза"
 }
 
-enum actionCar: String {
-    case openWindow = "Окткрыть окна"
-    case closedWindow = "Закрыть окна"
-    case startEngine = "Завести двигатель"
-    case stopEngine = "Заглушить двигатель"
-    case putLuggage = "Положить груз в багажник"
-    case removeLuggage = "Вытащить груз из багажника"
-    
+enum ActionCar: String {
+    case OpenWindow = "Окткрыть окна"
+    case ClosedWindow = "Закрыть окна"
+    case StartEngine = "Завести двигатель"
+    case StopEngine = "Заглушить двигатель"
+    case PutLuggage = "Положить груз в багажник"
+    case RemoveLuggage = "Вытащить груз из багажника"
     
 }
 
-// MARK: - Структура
+enum TruckCarTank: String {    // Особенности грузовой машины
+    case CarTank = "Топлива в баке - "
+    case CarTankEmpty = "Топливо закончилось"
+    case CarTankMax = "Топливный бак полон"
+    
+}
 
-struct car {
+enum SportCarSpeed: String {    // Особенности спортивной машины
+    case CarSpeed = "Скорость автомобиля - "
+    case CarSpeedStop = "Автомобиль остановился"
+    case CarSpeedMax = "Автомобиль достиг максимальной скорости"
+}
+
+
+
+// MARK: - Класс родительский
+
+class car {
     let brand:String // марка авто
     let yearCar: Int // год выпуска
     let baggageVolume:Int // объём багажника
-    var engine: engineState {
+    var engine: EngineState {
         didSet{
             print(engine.rawValue)
         }
     }
-    
-    var windows: windowCar {
+
+    var windows: WindowCar {
         didSet {
             print(windows.rawValue)
         }
     }
-    
+
     var volumebaggageLoading: Int   // колличество груза багажа
-    
-    mutating func loadingBaggage(_ volumebaggageLoading: Int){
+
+    func loadingBaggage(volumebaggageLoading: Int){
         if baggageVolume == volumebaggageLoading {
-            print(baggageFill.Full.rawValue)
-            
+            print(BaggageFill.Full.rawValue)
+
         }
         if baggageVolume > volumebaggageLoading {
-            print(baggageFill.partially.rawValue, baggageVolume - volumebaggageLoading," литров")
+            print(BaggageFill.Partially.rawValue)
         }
         if baggageVolume < volumebaggageLoading {
-            print(baggageFill.overload.rawValue)
-            
+            print(BaggageFill.Overload.rawValue)
+
         }
-        else{
-            print(baggageFill.Empty.rawValue)
+        if volumebaggageLoading == 0{
+            print(BaggageFill.Empty.rawValue)
         }
     }
-    
-    func ActionCar(type: actionCar){
+
+    func ActionCar(type: ActionCar){
         switch type {
-        case .openWindow:
-            print(windowCar.open.rawValue)
-        case .closedWindow:
-            print(windowCar.closed.rawValue)
-            
-        case .startEngine:
-            print(engineState.Start.rawValue)
-            
-        case .stopEngine:
-            print(engineState.Stop.rawValue)
+        case .OpenWindow:
+            print(WindowCar.Open.rawValue)
+        case .ClosedWindow:
+            print(WindowCar.Closed.rawValue)
+
+        case .StartEngine:
+            print(EngineState.Start.rawValue)
+
+        case .StopEngine:
+            print(EngineState.Stop.rawValue)
             //        case .putLuggage:
             //            print(loadingBaggage.)
-            
+
         default:
             print("Zdelaite chtoto s auto")
         }
     }
-    
-    mutating func CarInfo(){
+
+    func CarInfo(){
         print("_______________________")
         print("Модель авто - \(brand)")
         print("Год выпуска - \(yearCar)")
         print("Объём багажгика - \(baggageVolume)")
     }
-    
-    
+
+
     init(brand: String, yearCar: Int, baggageVolume: Int) {
         self.brand = brand
         self.yearCar = yearCar
         self.baggageVolume = baggageVolume
         self.engine = .Stop
-        self.windows = .closed
+        self.windows = .Closed
         self.volumebaggageLoading = 0
-        
-        
+
+
     }
 }
-var sprotCar = car(brand: "BMW", yearCar: 2020, baggageVolume: 1500)
-var truckCar = car(brand: "MAN", yearCar: 1999, baggageVolume: 50000)
+
+// MARK: - Класс грузового автомобиля
+
+final class TruckCar: car {
+    let volumeTank: Int
+    
+    var volumeTruckCarTank: Int
+        
+    func valumeTankCar(volumeTruckCarTank: Int) {
+        if volumeTank == volumeTruckCarTank {
+            print(TruckCarTank.CarTankMax.rawValue)
+        }
+        if volumeTruckCarTank == 0 {
+            print(TruckCarTank.CarTankEmpty.rawValue)
+        }
+        if volumeTank < volumeTruckCarTank {
+            print(TruckCarTank.CarTank,volumeTruckCarTank)
+        }
+    }
+    init(brand: String, yearCar: Int, baggageVolume: Int, volumeTank: Int) {
+        self.volumeTank = volumeTank
+        self.volumeTruckCarTank = 0
+        super.init(brand: brand, yearCar: yearCar, baggageVolume: baggageVolume)
+        }
+}
+
+// MARK: - Класс спортивного автомобиля
+
+class SportCar: car {
+    let speedMax: Int
+    
+    var volumeSpeedCar: Int
+    
+    
+    init(brand: String, yearCar: Int, baggageVolume: Int, speedMax: Int) {
+        self.speedMax = speedMax
+        self.volumeSpeedCar = 0
+        super.init(brand: brand, yearCar: yearCar, baggageVolume: baggageVolume)
+    }
+    
+    func volumeSpeed(volumeSpeedCar: Int) {
+        if speedMax == volumeSpeedCar {
+            print(SportCarSpeed.CarSpeedMax.rawValue)
+        }
+        if volumeSpeedCar == 0 {
+            print(SportCarSpeed.CarSpeedStop.rawValue)
+        }
+       else {
+           print(SportCarSpeed.CarSpeed.rawValue,volumeSpeedCar)
+        }
+
+    }
+ }
+
+
+final class SportCarLife: SportCar {
+    override func volumeSpeed(volumeSpeedCar: Int) {
+        super.volumeSpeed(volumeSpeedCar: volumeSpeedCar)
+        print("Error")
+    }
+}
+// MARK: -  Объекты класса
+
+var sprotCar = SportCarLife(brand: "BMW", yearCar: 2020, baggageVolume: 1500, speedMax: 300)
+var truckCar = TruckCar(brand: "MAN", yearCar: 1990, baggageVolume: 50000, volumeTank: 500)
+
+
+// MARK: - Действия с объектами
 
 sprotCar.CarInfo()
-sprotCar.ActionCar(type: .openWindow)
-sprotCar.ActionCar(type: .startEngine)
-sprotCar.loadingBaggage(30000)
+sprotCar.ActionCar(type: .OpenWindow)
+sprotCar.ActionCar(type: .StartEngine)
+sprotCar.loadingBaggage(volumebaggageLoading: 30000)
+sprotCar.volumeSpeed(volumeSpeedCar: 290)
 
 
 
 truckCar.CarInfo()
-truckCar.ActionCar(type: .closedWindow)
-truckCar.ActionCar(type: .stopEngine)
-truckCar.loadingBaggage(20000)
+truckCar.ActionCar(type: .ClosedWindow)
+truckCar.ActionCar(type: .StopEngine)
+truckCar.loadingBaggage(volumebaggageLoading: 500)
+truckCar.valumeTankCar(volumeTruckCarTank: 600)
