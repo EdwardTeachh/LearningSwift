@@ -1,3 +1,11 @@
 import UIKit
 
-var greeting = "Hello, playground"
+var car = "bmw"
+let name = "Valera"
+let age = 25
+
+car
+name
+
+print(name + " na " + car)
+
