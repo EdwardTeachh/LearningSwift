@@ -1,21 +1,37 @@
 import UIKit
 
-var name: String = ""
-var name2 = String()
-let age = 25
+let constArray = ["a", "b", "c", "d"]
+constArray.count
 
-name = "Mark"
-name2 = "Anna"
-name + " and " + name2
+var Array = [String]()
 
-var key = 1...5
-
-for i in key {
-    print(i)
+if Array.count == 0 {
+    print("array is Empty")
+}
+if Array.isEmpty {
+    print("array is Empty")
 }
 
-if age > 10 {
-    print("good")
-} else {
-    print("error")
+Array += constArray
+Array += ["w"]
+Array.append("masha")
+
+print(Array)
+
+Array[1]
+Array[2...5]
+
+Array.insert("-", at: 3)
+Array.remove(at: 3)
+Array.removeLast()
+Array
+
+
+var arrayDollar = [Int]()
+var sum = 0
+arrayDollar += [10, 20, 100, 2, 1, 50]
+for sumDollar in arrayDollar {
+    sum = sumDollar + sum
 }
+  print(sum)
+
