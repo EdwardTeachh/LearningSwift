@@ -1,89 +1,60 @@
 import UIKit
 
-let dic1 : [Int : String] = [0 : "mama", 1 : "papa"]
-let dic2 : Dictionary<String, Double> = ["papa" : 30.0]
-let dic3 = [0 : "mama", 1 : "papa"]
-let dic4 = ["mama" : "Tanya", "papa" : "Sergey"]
+// Tuples
 
-dic4["mama"]
-dic3[0]
+// let oneTuples: (Int, String, Double, Bool) = (1, "Polina", 25.5, false)
 
-var dic5 = ["car" : "mersedes", "tel" : "iphone"]
+let oneTuples = (1, "Polina", 25.5, false)
 
-dic5.count
-dic5.isEmpty
+let (numberOne, name, decinaValue, boolValue) = oneTuples
 
-var namesOfIntegers = [Int : String]()
+numberOne
+name
+decinaValue
+boolValue
 
-namesOfIntegers.count
-namesOfIntegers.isEmpty
+let (_, _, c, _) = oneTuples
 
-dic5["mama"] = "Nina"
+c
+oneTuples.0
+oneTuples.1
+oneTuples.2
 
-dic5
-dic5.keys
-dic5.values
+let tuple = (one : 1, name : "Polina", boolValue : true)
 
-dic5.updateValue("Vladimir", forKey: "papa")
+tuple.0
+tuple.1
+tuple.name
 
-//dic5
-//dic5["car"] = nil
-//dic5
-//dic5 = [:]
+// let name1 = "Sergey"; let name2 = "Polina"; let name3 = "Jack" - так писать не надо!
 
-for key in dic5.keys {
-    print("key = \(key), value = \(dic5[key]!)")
-}
+//let (name1, name2, name3) = ("Sergey", "Polina", "Jack")
+//name1
 
-for (key, value) in dic5 {
-    print("key = \(key), value = \(value)")
-    
-}
+let nameTuple = (name1 : "Sergey", name2 : "Polina", name3 : "Jack" )
 
-var monthRus = [Int : String]()
-monthRus[1] = "Январь"
-monthRus[2] = "Февраль"
-monthRus[3] = "Март"
-monthRus[4] = "Апрель"
-monthRus[5] = "Май"
-monthRus[6] = "Июнь"
-monthRus[7] = "Июль"
-monthRus[8] = "Август"
-monthRus[9] = "Сентябрь"
-monthRus[10] = "Октябрь"
-monthRus[11] = "Ноябрь"
-monthRus[12] = "Декабрь"
+nameTuple.name1
 
-var monthEng = [Int : String]()
-monthRus[1] = "January"
-monthRus[2] = "February"
-monthRus[3] = "March"
-monthRus[4] = "April"
-monthRus[5] = "May"
-monthRus[6] = "June"
-monthRus[7] = "July"
-monthRus[8] = "August"
-monthRus[9] = "September"
-monthRus[10] = "October"
-monthRus[11] = "November"
-monthRus[12] = "December"
+print(nameTuple)
 
-for key in monthRus.keys {
-    print("key MonthRus = \(key)")
-}
-for key in monthEng.keys {
-    print("key MonthEng= \(key)")
-}
+let nameNames = "Jack"
+let age = 25
 
-var dic6 = [Int : String]()
+print("User = \(nameNames) age = \(age)")
+print((nameNames, age))
 
-if dic6.isEmpty {
-    dic6[1] = "ku-ku"
-    dic6[2] = "hi"
-    print(dic6)
-} else {
-    print("error")
-}
+let tupleOne = (car1 : "BMW", car2 : "Audi")
+let tupleTwo = (name : "Valera", age : 25)
+let tupleThree = (status : "good", boolValue : true)
+let monthRus = (one : "Январь",two : "Февраль",three : "Март")
+let monthEng = (one : "January",two : "February",three : "March")
+
+print("Месяца на русском = \(monthRus) Months in English = \(monthEng)")
+print((monthRus, monthEng))
+
+
+
+
 
 
 
