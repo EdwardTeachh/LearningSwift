@@ -1,60 +1,55 @@
 import UIKit
 
-// Tuples
+var data : String?
+data = "30.02.2017"
 
-// let oneTuples: (Int, String, Double, Bool) = (1, "Polina", 25.5, false)
+if let unwrapeedDate = data {
+    print("текущая дата \(unwrapeedDate)")
+} else {
+    print("Дата не была получена")
+}
 
-let oneTuples = (1, "Polina", 25.5, false)
+print("текущая дата  \(data!)")
 
-let (numberOne, name, decinaValue, boolValue) = oneTuples
+if data != nil {
+    print("текущая дата \(data!)")
+} else {
+    print("nil")
+}
 
-numberOne
-name
-decinaValue
-boolValue
+let age : String = "20"
 
-let (_, _, c, _) = oneTuples
+if Int(age) != nil {
+    print(Int(age)!)
+}
 
-c
-oneTuples.0
-oneTuples.1
-oneTuples.2
+//let constNil : String?
+//let constNil2 : Int?
+//let constNil3 : Double?
 
-let tuple = (one : 1, name : "Polina", boolValue : true)
+let car : String?
+let age2 : Int?
+let name : String?
+let lesson : Int?
+let surname : String?
 
-tuple.0
-tuple.1
-tuple.name
+car = "bmw"
+age2 = 28
+name = "Masha"
+lesson = 7
+surname = "Voronina"
 
-// let name1 = "Sergey"; let name2 = "Polina"; let name3 = "Jack" - так писать не надо!
+let myName = "Artem"
 
-//let (name1, name2, name3) = ("Sergey", "Polina", "Jack")
-//name1
+for i in myName {
+    print(i)
+}
 
-let nameTuple = (name1 : "Sergey", name2 : "Polina", name3 : "Jack" )
+let ageArray = [28, 28, 47, 3]
 
-nameTuple.name1
-
-print(nameTuple)
-
-let nameNames = "Jack"
-let age = 25
-
-print("User = \(nameNames) age = \(age)")
-print((nameNames, age))
-
-let tupleOne = (car1 : "BMW", car2 : "Audi")
-let tupleTwo = (name : "Valera", age : 25)
-let tupleThree = (status : "good", boolValue : true)
-let monthRus = (one : "Январь",two : "Февраль",three : "Март")
-let monthEng = (one : "January",two : "February",three : "March")
-
-print("Месяца на русском = \(monthRus) Months in English = \(monthEng)")
-print((monthRus, monthEng))
-
-
-
-
+for initArray in ageArray {
+    print(initArray)
+}
 
 
 
