@@ -1,112 +1,96 @@
 import UIKit
 
-//switch
-for i in 0...200 {
-    if i == 15 {
-        break
+var arrayJurnal = [String]()
+
+func addStudent(name: String, proffesional: String) {
+    arrayJurnal.append(name)
+    arrayJurnal.append(proffesional)
+    print(arrayJurnal)
+}
+addStudent(name: "Jack", proffesional: "IOS Dev")
+addStudent(name: "Masha", proffesional: "Android Dev")
+addStudent(name: "Sergey", proffesional: "Java Dev")
+
+func calculate(number1: Int, number2: Int) -> Int {
+    number1 + number2
+}
+
+let sum = calculate(number1: 22, number2: 20)
+print(sum)
+
+var money = [1,44,55,2312,5533,55534,4444,32,4,2,]
+var mone2 = [1,44,55,2312,5533,55534,4444,32,4,2,]
+
+func calculateMoney(inArray: [Int]) -> Int {
+    var sum = 0
+    for i in inArray {
+        sum += i
     }
-    print(i)
+    return sum
 }
 
-var day = 5
+let sum2 = calculateMoney(inArray: money)
+print(sum2)
 
-if day == 1 {
-    print("Будний день")
-} else if day == 2 {
-    print("Будний день")
-} else if day == 3 {
-    print("Будний день")
-} else if day == 4 {
-    print("Будний день")
-} else if day == 5 {
-    print("Пятница")
-} else if day == 6 {
-    print("Выходной")
-} else if day == 7 {
-    print("Выходной")
-}
-
-switch day {
-case 1...4:
-    print("Будний день")
-case 5:
-    print("Пятница")
-case 6...7:
-    print("Выходной")
-default:
-    break
-}
-
-let nameWork = "Swift dev"
-let age = 51
-let peopleSex = "M"
-
-switch (nameWork, age) {
-case (_, 1...17):
-    print("Ты маловат")
-case ("Swift dev", 18...50) where peopleSex == "W":
-    print("Девушек не берём")
-case ("Swift dev", 18...50) where peopleSex == "M":
-    print("Вы нам подходите")
-case let (name, age):
-    print("\(name) в \(age) лет?")// value banding
-default:
-    print("Введите корректные данные")
-}
-
-
-for _ in 0...200 {
-    for _ in 0...15 {
-        break
+func generalFunc(answer: Bool) -> () -> String {
+    func sayYes() -> String {
+        return "Yes"
     }
-    break
+    func sayNo() -> String {
+        return "No"
+    }
+    return answer ? sayYes : sayNo
 }
 
-var peopleAge : Int
-peopleAge = 20
+generalFunc(answer: false)()
 
-if peopleAge == 3 {
-    print("Иди в садик")
-} else if peopleAge == 7 {
-    print("Иди в школу")
-} else if peopleAge == 18 {
-    print("Иди в универ")
-} else if peopleAge == 22 {
-    print("Иди работай")
-} else {
-    print("Иди куда хочешь")
+
+func numberFunc1 () {
+    
 }
 
-switch peopleAge {
-case 3...7:
-    print("Иди в садик")
-case 7...18:
-    print("Иди в школу")
-case 18...22:
-    print("Иди в универ")
-case 22...65:
-    print("Иди работай")
-default :
-    print("Иди куда хочешь")
+func numberFunc2 (name: String) {
 }
 
-var rating : Int
-rating = 5
-
-switch rating {
-case 1...3:
-    print("Тебе нужно все переделать")
-case 3...6:
-    print("Тебе есть куда стремится")
-case 6...10:
-    print("Отлично")
-case 10...12:
-    print("Ты великолепен")
-default :
-    print("Ты не сдал контрольную")
+func numberFunc3 (age: Int) -> Int {
+    return age
 }
 
-var familyArray = ["Mama", "Papa", "Mark", "Jack", "Masha", "Artem", "Nina", "Mia", "Sergey", "Dima"]
+numberFunc1()
+numberFunc2(name: "Jack")
+numberFunc3(age: 10)
 
-familyArray.sort()
-print(familyArray)
+var StudentArray = [String]()
+
+func StudentJurnal(name: String, profession: String, rang: String) {
+    StudentArray.append(name)
+    StudentArray.append(profession)
+    StudentArray.append(rang)
+    
+    for i in StudentArray {
+        print(i)
+    }
+}
+StudentJurnal(name: "Jack", profession: "IOS Dev", rang: "5")
+
+
+var myNameArray = [String]()
+
+func myName(name: String, surname: String){
+    myNameArray.append(name)
+    myNameArray.append(surname)
+    myNameArray.sort()
+    print(myNameArray)
+}
+myName(name: "Jack", surname: "Smith")
+myName(name: "Masha", surname: "Petrova")
+
+func circle(radius: Double) -> Double {
+
+    var area = radius * radius * 3.14
+    return area
+}
+var result = circle(radius: 10)
+print(result)
+
+
